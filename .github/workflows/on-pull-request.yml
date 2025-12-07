@@ -1,12 +1,10 @@
 name: On Pull Request
 
-# 1. Define when this workflow should run
 on:
   pull_request:
     branches: [ main ] # Triggers on PRs targeting main/master
   workflow_dispatch:
 
-# Grant necessary permissions for the workflow to check out code and publish checks
 permissions:
   contents: read
   checks: write
@@ -26,36 +24,10 @@ jobs:
         # Crucially, update this to your specific .NET 10 version
         dotnet-version: '10.0.x' 
         
-    # 3. Restore Dependencies (with Caching for speed)
-    - name: 📦 Restore Dependencies
-      # Uses the presence of the .csproj/.fsproj files to generate a unique cache key
-      uses: actions/cache@v4
-      with:
-        path: ~/.nuget/packages
-        key: ${{ runner.os }}-nuget-${{ hashFiles('**/*.csproj', '**/*.fsproj', '**/*.vbproj') }}
-        restore-keys: |
-          ${{ runner.os }}-nuget-
-          
-    - name: ⚙️ Run dotnet restore
-      working-directory: src/
-      run: dotnet restore
-
-    # 4. Build the Project
     - name: 🏗️ Build Project
       working-directory: src/
       run: dotnet build --configuration Release --no-restore
 
-    # 5. Run Unit Tests and generate a test results report
     - name: ✅ Run Tests and Generate Report
       working-directory: src/
-      run: dotnet test --configuration Release --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx"
-      
-    # 6. Publish Test Results to GitHub Checks
-    - name: 📄 Publish Test Results Summary
-      uses: dorny/test-reporter@v1
-      if: always()
-      with:
-        name: Test Results
-        path: '**/*test-results.trx' # Path to the generated .trx files
-        reporter: dotnet-trx
-        token: ${{ secrets.GITHUB_TOKEN }}
+      run: dotnet test
