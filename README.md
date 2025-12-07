@@ -1,4 +1,5 @@
-# MuteMe Button Client for Linux (LMDE) 
+# MuteMe Button Client for Linux
+tested with LMDE and CachyOS
 
 A UI project for the MuteMe button. I could not make it work properly on Linux Mint Debian Edition (LMDE), so I used on-line resouces from other projects to build a UI that mimics the behavior of the software that was originally created by MuteMe team.
 
