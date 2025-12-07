@@ -37,14 +37,17 @@ jobs:
           ${{ runner.os }}-nuget-
           
     - name: ⚙️ Run dotnet restore
+      working-directory: src/
       run: dotnet restore
 
     # 4. Build the Project
     - name: 🏗️ Build Project
+      working-directory: src/
       run: dotnet build --configuration Release --no-restore
 
     # 5. Run Unit Tests and generate a test results report
     - name: ✅ Run Tests and Generate Report
+      working-directory: src/
       run: dotnet test --configuration Release --no-build --verbosity normal --logger "trx;LogFileName=test-results.trx"
       
     # 6. Publish Test Results to GitHub Checks
