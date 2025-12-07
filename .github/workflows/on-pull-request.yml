@@ -23,10 +23,6 @@ jobs:
       with:
         # Crucially, update this to your specific .NET 10 version
         dotnet-version: '10.0.x' 
-        
-    - name: 🏗️ Build Project
-      working-directory: src/
-      run: dotnet build --configuration Release --no-restore
 
     - name: ✅ Run Tests and Generate Report
       working-directory: src/
