@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   build-and-test:
-    name: Buil and Test
+    name: ci-on-pull-request
     runs-on: ubuntu-latest
 
     steps:
