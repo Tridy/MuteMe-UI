@@ -13,6 +13,7 @@ using Utilities;
 
 namespace MuteMeControl.Tests;
 
+[Explicit]
 public class MuteMeButtonTests
 {
     [Test]

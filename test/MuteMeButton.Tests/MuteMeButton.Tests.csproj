@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
+        <RootNamespace>MuteMeControl.Tests</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
