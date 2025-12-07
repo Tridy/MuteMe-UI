@@ -21,7 +21,6 @@ namespace MuteMeControl.Services;
 public class ConnectedState
 {
     private readonly ILogger _logger;
-    private bool _isConnected;
 
     private bool _previousIsConnected;
 
@@ -33,17 +32,17 @@ public class ConnectedState
 
     public bool IsConnected
     {
-        get => _isConnected;
+        get;
         set
         {
-            _isConnected = value;
+            field = value;
 
-            if (_isConnected != _previousIsConnected)
+            if (field != _previousIsConnected)
             {
-                string state = _isConnected ? "connected" : "not connected";
+                string state = field ? "connected" : "not connected";
                 _logger.LogInformation("Button is {State} ...", state);
 
-                _previousIsConnected = _isConnected;
+                _previousIsConnected = field;
             }
         }
     }
