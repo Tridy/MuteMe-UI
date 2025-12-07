@@ -1,12 +1,12 @@
 # MuteMe Button Client for Linux
+
 tested with LMDE and CachyOS
 
 A UI project for the MuteMe button. I could not make it work properly on Linux Mint Debian Edition (LMDE), so I used on-line resouces from other projects to build a UI that mimics the behavior of the software that was originally created by MuteMe team.
 
 It minimizes and closes to the system tray. The window can be brought to the focus from the system tray icon context menu. Tray icon is also used to close/exit the application. Double click on the tray icon brings the main windows as well.
 
-Even though it is possible to make this fully multi platform utility, my primary goal was to make it work on LMDE. To make it fully multi-platform there are several changes that need to be done that will be specific to each OS.
-
+Even though it is possible to make this fully multi platform utility, my primary goal was to make it work on Linux (I could test it on LMDE and CachyOS). To make it fully multi-platform there are several changes that need to be done that will be specific to each OS.
 
 ![image-20250615141249774](docs/images/main-window-001.png)
 
