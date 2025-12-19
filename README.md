@@ -44,7 +44,9 @@ The microphone icon was take from the [svgrepo.com](https://www.svgrepo.com/svg/
 to enable user standard users access/permission to read or write to raw USB/HID devices by default.
 
 1. create file:
-   sudo nano /etc/udev/rules.d/99-muteme.rules
+```
+sudo nano /etc/udev/rules.d/99-muteme.rules
+```
 
 with content:
 ```
