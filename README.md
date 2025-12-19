@@ -39,7 +39,26 @@ the following projects were used to get ideas and code examples in the process:
 
 The microphone icon was take from the [svgrepo.com](https://www.svgrepo.com/svg/513446/microphone) website.
 
+### Notes for CachyOS (Arch OS)
 
+to enable user standard users access/permission to read or write to raw USB/HID devices by default.
+
+1. create file:
+   sudo nano /etc/udev/rules.d/99-muteme.rules
+
+with content:
+```
+SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3603", ATTRS{idProduct}=="0001", MODE="0666", GROUP="users"
+KERNEL=="hidraw*", SUBSYSTEM=="hidraw", ATTRS{idVendor}=="3603", ATTRS{idProduct}=="0001", TAG+="uaccess"
+```
+
+2. refresh:
+```
+sudo udevadm control --reload-rules
+sudo udevadm trigger
+```
+  
+3. unplug, replug muteme button
 
 
 

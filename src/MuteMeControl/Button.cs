@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Threading;
@@ -127,7 +128,12 @@ public class Button
 
     public async Task CycleColors(CancellationToken cancellationToken)
     {
-        ListenIfConnected(cancellationToken);
+        bool connected = ListenIfConnected(cancellationToken);
+
+        if (!connected)
+        {
+            throw new InvalidOperationException("Could not connect to MuteMe device.");
+        }
 
         MuteMeColor[] colors = new[]
         {
@@ -188,7 +194,7 @@ public class Button
         if (!muteMeDevice.TryOpen(out HidStream hidStream))
         {
             _isConnected.IsConnected = false;
-            _logger.LogError("Could not establish connection to MuteMe");
+            Debug.WriteLine("Could not establish connection to MuteMe, waiting for 5 seconds before retrying ...");
             cancellationToken.WaitHandle.WaitOne(5000);
             return false;
         }
