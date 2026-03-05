@@ -37,7 +37,7 @@ the following projects were used to get ideas and code examples in the process:
 
 ### Project Icon
 
-The microphone icon was take from the [svgrepo.com](https://www.svgrepo.com/svg/513446/microphone) website.
+The microphone icon was taken from the [svgrepo.com](https://www.svgrepo.com/svg/513446/microphone) website.
 
 ### Notes for CachyOS (Arch OS)
 
